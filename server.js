@@ -24,31 +24,23 @@ const PORT = process.env.PORT || 9000;
 
 connectDB();
 
-// Fix CORS configuration - handle both string and array formats
-const allowedOrigins = process.env.CLIENT_URL 
-  ? process.env.CLIENT_URL.includes(',') 
-    ? process.env.CLIENT_URL.split(',') 
-    : process.env.CLIENT_URL
+const allowedOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map(url => url.trim())
   : ["https://moe-rho.vercel.app"];
 
-console.log('Allowed CORS origins:', allowedOrigins);
+console.log("Allowed CORS origins:", allowedOrigins);
 
-// Webhook routes should come before body parsing middleware
+
 app.use('/api/webhooks', webhookRoutes);
 
-// Security headers with Helmet configuration that works with CORS
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
   crossOriginEmbedderPolicy: false
 }));
 
-// CORS middleware with proper configuration
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, Postman, etc.)
     if (!origin) return callback(null, true);
-    
-    // Check if origin is in allowed list
     if (Array.isArray(allowedOrigins) && allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else if (allowedOrigins === origin) {
@@ -64,20 +56,17 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-// Additional headers
 app.use((req, res, next) => {
   res.setHeader('Permissions-Policy', 'payment=(self)');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
-// Logging
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/ask', questionRoutes);
@@ -85,7 +74,6 @@ app.use('/api/upload', fileRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/knowledge', knowledgeRoutes);
 
-// Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'OK', 
@@ -94,10 +82,8 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Handle preflight requests globally
 app.options('*', cors());
 
-// Static files and client routing (for production)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html')));
@@ -107,7 +93,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Error handling middlewares
 app.use(notFound);
 app.use(errorHandler);
 
