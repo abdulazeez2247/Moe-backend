@@ -344,3 +344,21 @@
 2025-09-04 00:54:05 info: ::1 - - [03/Sep/2025:23:54:05 +0000] "POST /api/auth/signup HTTP/1.1" 201 975 "http://localhost:3000/" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
 2025-09-04 00:54:23 info: ::1 - - [03/Sep/2025:23:54:23 +0000] "POST /api/ask HTTP/1.1" 200 270 "http://localhost:3000/" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
 2025-09-04 00:54:32 info: ::1 - - [03/Sep/2025:23:54:32 +0000] "POST /api/ask/68b4f21d0f345374441f7207/vote HTTP/1.1" 400 61 "http://localhost:3000/" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+2025-09-10 00:17:34 info: Server running in development mode on port 9000
+2025-09-10 00:18:06 error: Error connecting to MongoDB:
+2025-09-10 00:19:05 info: Server running in development mode on port 9000
+2025-09-10 00:19:09 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
+2025-09-10 00:22:42 info: Server running in development mode on port 9000
+2025-09-10 00:23:17 error: Error connecting to MongoDB:
+2025-09-10 00:27:08 info: Server running in development mode on port 9000
+2025-09-10 00:27:40 error: Error connecting to MongoDB:
+2025-09-10 00:31:16 info: Server running in development mode on port 9000
+2025-09-10 00:31:48 error: Error connecting to MongoDB:
+2025-09-10 00:37:57 info: Server running in development mode on port 9000
+2025-09-10 00:38:29 error: Error connecting to MongoDB:
+2025-09-10 00:38:40 info: Server running in development mode on port 9000
+2025-09-10 00:38:46 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
+2025-09-10 00:58:47 info: Server running in development mode on port 9000
+2025-09-10 00:58:53 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
+2025-09-10 01:17:48 info: Server running in development mode on port 9000
+2025-09-10 01:17:53 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
