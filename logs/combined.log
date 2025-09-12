@@ -368,3 +368,12 @@
 2025-09-10 01:46:27 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
 2025-09-10 17:32:11 info: Server running in development mode on port 9000
 2025-09-10 17:32:15 info: MongoDB Connected: ac-dgweqrb-shard-00-01.7if10o8.mongodb.net
+2025-09-11 12:50:13 info: ::ffff:127.0.0.1 - - [11/Sep/2025:11:50:13 +0000] "POST /api/auth/signup HTTP/1.1" - - "-" "Insomnia/2023.5.7"
+2025-09-11 12:50:56 info: ::ffff:127.0.0.1 - - [11/Sep/2025:11:50:56 +0000] "POST /api/auth/signup HTTP/1.1" - - "-" "Insomnia/2023.5.7"
+2025-09-11 12:51:18 info: Server running in development mode on port 9000
+2025-09-11 12:51:27 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
+2025-09-11 12:51:55 info: ::ffff:127.0.0.1 - - [11/Sep/2025:11:51:55 +0000] "POST /api/auth/signup HTTP/1.1" 201 979 "-" "Insomnia/2023.5.7"
+2025-09-11 12:54:47 info: Server running in development mode on port 9000
+2025-09-11 12:54:59 info: Server running in development mode on port 9000
+2025-09-11 12:55:19 info: MongoDB Connected: ac-dgweqrb-shard-00-01.7if10o8.mongodb.net
+2025-09-12 02:23:35 info: ::ffff:127.0.0.1 - - [12/Sep/2025:01:23:35 +0000] "POST /api/auth/signup HTTP/1.1" 500 1370 "-" "Insomnia/2023.5.7"

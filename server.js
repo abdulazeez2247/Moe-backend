@@ -211,6 +211,7 @@ const connectDB = require('./config/db');
 const logger = require('./config/logger');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
+// const authRoutes = require('./routes/authRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const questionRoutes = require('./routes/questionRoutes');
