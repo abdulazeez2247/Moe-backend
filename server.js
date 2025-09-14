@@ -227,7 +227,7 @@ connectDB();
 
 const allowedOrigins = process.env.CLIENT_URL
   ? process.env.CLIENT_URL.split(',').map(url => url.trim())
-  : ["https://moe-rho.vercel.app"];
+  : ["https://mozaik-flame.vercel.app"];
 
 
 app.use(helmet({
