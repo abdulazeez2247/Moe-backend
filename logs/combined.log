@@ -377,3 +377,14 @@
 2025-09-11 12:54:59 info: Server running in development mode on port 9000
 2025-09-11 12:55:19 info: MongoDB Connected: ac-dgweqrb-shard-00-01.7if10o8.mongodb.net
 2025-09-12 02:23:35 info: ::ffff:127.0.0.1 - - [12/Sep/2025:01:23:35 +0000] "POST /api/auth/signup HTTP/1.1" 500 1370 "-" "Insomnia/2023.5.7"
+2025-09-16 22:36:14 info: Server running in development mode on port 9000
+2025-09-16 22:36:15 error: Error connecting to MongoDB:
+2025-09-16 22:39:48 info: Server running in development mode on port 9000
+2025-09-16 22:40:45 error: Error connecting to MongoDB:
+2025-09-16 22:53:27 info: Server running in development mode on port 9000
+2025-09-16 22:53:34 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
+2025-09-16 22:55:01 info: Server running in development mode on port 9000
+2025-09-16 22:55:09 info: MongoDB Connected: ac-dgweqrb-shard-00-00.7if10o8.mongodb.net
+2025-09-16 22:56:21 info: ::1 - - [16/Sep/2025:21:56:21 +0000] "POST /api/auth/signup HTTP/1.1" 201 974 "http://localhost:3001/" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+2025-09-16 22:57:00 info: ::1 - - [16/Sep/2025:21:57:00 +0000] "POST /api/auth/login HTTP/1.1" 200 904 "http://localhost:3001/" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+2025-09-16 22:57:33 info: ::1 - - [16/Sep/2025:21:57:33 +0000] "POST /api/ask HTTP/1.1" 200 264 "http://localhost:3001/" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
