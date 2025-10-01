@@ -7,7 +7,7 @@ const paymentSchema = new mongoose.Schema({
     required: true,
     index: true
   },
-  stripePaymentIntentId: String, // no need for sparse here if index is declared below
+  stripePaymentIntentId: String, 
   stripeSubscriptionId: String,
   stripeCustomerId: String,
   plan: {

@@ -379,11 +379,11 @@ const handlePaymentIntentSucceeded = async (paymentIntent) => {
         { upsert: true, new: true }
     );
 
-    console.log(`✅ Payment ${paymentIntent.id} completed for user: ${paymentIntent.metadata.userEmail}`);
+    console.log(` Payment ${paymentIntent.id} completed for user: ${paymentIntent.metadata.userEmail}`);
 };
 
 const handlePaymentIntentFailed = async (paymentIntent) => {
-    console.log(`❌ Payment failed: ${paymentIntent.id}`);
+    console.log(` Payment failed: ${paymentIntent.id}`);
     
     await Payment.findOneAndUpdate(
         { stripePaymentIntentId: paymentIntent.id },
@@ -398,7 +398,7 @@ const handlePaymentIntentFailed = async (paymentIntent) => {
 };
 
 const handlePaymentIntentRequiresAction = async (paymentIntent) => {
-    console.log(`⚠️ Payment requires action: ${paymentIntent.id}`);
+    console.log(` Payment requires action: ${paymentIntent.id}`);
     
     await Payment.findOneAndUpdate(
         { stripePaymentIntentId: paymentIntent.id },
@@ -408,15 +408,15 @@ const handlePaymentIntentRequiresAction = async (paymentIntent) => {
 };
 
 const handleChargeSucceeded = async (charge) => {
-    console.log(`✅ Charge succeeded: ${charge.id}`);
+    console.log(` Charge succeeded: ${charge.id}`);
 };
 
 const handleChargeFailed = async (charge) => {
-    console.log(`❌ Charge failed: ${charge.id}`);
+    console.log(` Charge failed: ${charge.id}`);
 };
 
 const handlePaymentIntentCapture = async (paymentIntent) => {
-    console.log(`⚠️ Payment requires capture: ${paymentIntent.id}`);
+    console.log(` Payment requires capture: ${paymentIntent.id}`);
 };
 
 const handleSubscriptionUpdated = async (subscription) => {
