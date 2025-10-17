@@ -1,29 +1,35 @@
-const slugify = require('slugify');
-const puppeteer = require('puppeteer');
-const path = require('path');
-const fs = require('fs').promises;
+const slugify = require("slugify");
+const puppeteer = require("puppeteer");
+const path = require("path");
+const fs = require("fs").promises;
 
 const generateSlug = (text, platform, version) => {
-    const baseSlug = slugify(text, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
-    const platformSlug = slugify(platform, { lower: true, strict: true });
-    const versionSlug = version ? slugify(version, { lower: true, strict: true }) : 'generic';
-    return `${platformSlug}/${versionSlug}/${baseSlug}`;
+  const baseSlug = slugify(text, {
+    lower: true,
+    strict: true,
+    remove: /[*+~.()'"!:@]/g,
+  });
+  const platformSlug = slugify(platform, { lower: true, strict: true });
+  const versionSlug = version
+    ? slugify(version, { lower: true, strict: true })
+    : "generic";
+  return `${platformSlug}/${versionSlug}/${baseSlug}`;
 };
 
 const generateSEOMeta = (question, answer, platform, version) => {
-    const cleanAnswer = answer.replace(/[#*`]/g, '').substring(0, 160).trim();
-    const title = `How to ${question} in ${platform} ${version || ''} | Moe`;
-    const description = `Learn how to ${question}. ${cleanAnswer}... Expert guide from Moe.`;
+  const cleanAnswer = answer.replace(/[#*`]/g, "").substring(0, 160).trim();
+  const title = `How to ${question} in ${platform} ${version || ""} | Moe`;
+  const description = `Learn how to ${question}. ${cleanAnswer}... Expert guide from Moe.`;
 
-    return {
-        seoTitle: title,
-        seoDescription: description,
-        publishedUrl: generateSlug(question, platform, version)
-    };
+  return {
+    seoTitle: title,
+    seoDescription: description,
+    publishedUrl: generateSlug(question, platform, version),
+  };
 };
 
 const generateSocialImage = async (title, outputPath) => {
-    const htmlContent = `
+  const htmlContent = `
     <!DOCTYPE html>
     <html>
     <head>
@@ -68,23 +74,24 @@ const generateSocialImage = async (title, outputPath) => {
     </html>
     `;
 
-    let browser;
-    try {
-        const dir = path.dirname(outputPath);
-        await fs.mkdir(dir, { recursive: true });
+  let browser;
+  try {
+    const dir = path.dirname(outputPath);
+    await fs.mkdir(dir, { recursive: true });
 
-        browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
-        const page = await browser.newPage();
-        await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
-        await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-        await page.screenshot({ path: outputPath, type: 'jpeg', quality: 90 });
-        await browser.close();
-
-    } catch (error) {
-        if (browser) await browser.close();
-        console.error('Failed to generate social image:', error);
-        throw error;
-    }
+    browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
+    await page.setContent(htmlContent, { waitUntil: "networkidle0" });
+    await page.screenshot({ path: outputPath, type: "jpeg", quality: 90 });
+    await browser.close();
+  } catch (error) {
+    if (browser) await browser.close();
+    console.error("Failed to generate social image:", error);
+    throw error;
+  }
 };
 
 module.exports = { generateSEOMeta, generateSocialImage, generateSlug };

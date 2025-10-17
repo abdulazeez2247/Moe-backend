@@ -1,8 +1,8 @@
-const rateLimit = require('express-rate-limit');
-const User = require('../models/User');
+const rateLimit = require("express-rate-limit");
+const User = require("../models/User");
 
 const getReadiness = (req, res, next) => {
-  req.rateLimitTier = 'unauthenticated';
+  req.rateLimitTier = "unauthenticated";
   if (req.user) {
     req.rateLimitTier = req.user.plan;
   }
@@ -15,12 +15,12 @@ const freeLimiter = rateLimit({
     return 50;
   },
   message: {
-    status: 'fail',
-    message: 'Too many requests from this IP, please try again in 15 minutes.'
+    status: "fail",
+    message: "Too many requests from this IP, please try again in 15 minutes.",
   },
   standardHeaders: true,
   legacyHeaders: false,
-  skip: (req) => req.rateLimitTier !== 'free'
+  skip: (req) => req.rateLimitTier !== "free",
 });
 
 const paidLimiter = rateLimit({
@@ -29,29 +29,31 @@ const paidLimiter = rateLimit({
     return 500;
   },
   message: {
-    status: 'fail',
-    message: 'Too many requests from this IP, please try again in 15 minutes.'
+    status: "fail",
+    message: "Too many requests from this IP, please try again in 15 minutes.",
   },
   standardHeaders: true,
   legacyHeaders: false,
-  skip: (req) => req.rateLimitTier === 'free' || req.rateLimitTier === 'unauthenticated'
+  skip: (req) =>
+    req.rateLimitTier === "free" || req.rateLimitTier === "unauthenticated",
 });
 
 const authLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   max: 10,
   message: {
-    status: 'fail',
-    message: 'Too many authentication attempts from this IP, please try again in an hour.'
+    status: "fail",
+    message:
+      "Too many authentication attempts from this IP, please try again in an hour.",
   },
   standardHeaders: true,
   legacyHeaders: false,
-  skip: (req) => req.rateLimitTier !== 'unauthenticated'
+  skip: (req) => req.rateLimitTier !== "unauthenticated",
 });
 
 module.exports = {
   getReadiness,
   freeLimiter,
   paidLimiter,
-  authLimiter
+  authLimiter,
 };

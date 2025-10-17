@@ -1,7 +1,6 @@
 const axios = require("axios");
 const API_BASE = "https://www.googleapis.com/youtube/v3";
 
-// Resolve channelId from handle (e.g. @MozaikSoftware)
 const getChannelIdFromHandle = async (handle, apiKey) => {
   const url = `${API_BASE}/search?part=snippet&type=channel&q=${handle}&key=${apiKey}`;
   const { data } = await axios.get(url);
@@ -13,8 +12,11 @@ const getChannelIdFromHandle = async (handle, apiKey) => {
   return data.items[0].snippet.channelId;
 };
 
-// Fetch videos (snippet + metadata)
-const getChannelVideosWithCaptions = async (channelId, apiKey, maxResults = 10) => {
+const getChannelVideosWithCaptions = async (
+  channelId,
+  apiKey,
+  maxResults = 10
+) => {
   const url = `${API_BASE}/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`;
   const { data } = await axios.get(url);
 
@@ -33,7 +35,6 @@ const getChannelVideosWithCaptions = async (channelId, apiKey, maxResults = 10) 
   }));
 };
 
-// Fetch detailed channel stats
 const getChannelStats = async (channelId, apiKey) => {
   const url = `${API_BASE}/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
   const { data } = await axios.get(url);

@@ -31,11 +31,14 @@ const getKnowledgeStatus = async (req, res) => {
   try {
     let results = [];
 
-    // YouTube processing only
     for (const channelId of CHANNEL_IDS) {
       try {
         const stats = await getChannelStats(channelId, YOUTUBE_API_KEY);
-        const videos = await getChannelVideosWithCaptions(channelId, YOUTUBE_API_KEY, 10);
+        const videos = await getChannelVideosWithCaptions(
+          channelId,
+          YOUTUBE_API_KEY,
+          10
+        );
 
         const taggedVideos = videos.map((v) => ({
           ...v,
@@ -45,8 +48,11 @@ const getKnowledgeStatus = async (req, res) => {
 
         results = results.concat(taggedVideos);
       } catch (channelError) {
-        console.error(`Error processing channel ${channelId}:`, channelError.message);
-        // Continue with other channels even if one fails
+        console.error(
+          `Error processing channel ${channelId}:`,
+          channelError.message
+        );
+
         continue;
       }
     }
