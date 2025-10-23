@@ -8,7 +8,7 @@ const { protect } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-router.post("/", protect, askQuestion); // Changed from "/ask" to "/"
+router.post("/", protect, askQuestion); 
 router.post("/:answerId/vote", protect, voteAnswer);
 router.get("/catalog", getCatalog);
 
